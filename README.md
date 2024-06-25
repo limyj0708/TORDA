@@ -39,6 +39,7 @@ vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
         - True일 경우, 평균 값을 점선으로 표시.
 
 #### plot_box(names, title, height, width, colors = None)
+- Parameters:
     - names : list of string
         - dataset 리스트 내 각 데이터의 이름.
     - title : string
