@@ -1,9 +1,11 @@
+from importlib.metadata import version
+
 import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
 import scipy.stats as stats
 from sklearn.neighbors import KernelDensity
-from importlib.metadata import version
+
 
 class distribution:
     
@@ -25,7 +27,7 @@ class distribution:
         bandwidth = 1.06 * min(std_dev, iqr / 1.34) * n ** (-1 / 5)
         return bandwidth
     
-    def plot_histogram_kde(self, names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = False, display_maxinum_likelihood = False, display_mean = False):
+    def plot_histogram_kde(self, names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = False, display_maxinum_peak_density = False, display_mean = False):
         if colors is None:
             colors = ['blue', 'green', 'red', 'purple', 'orange']
         
@@ -72,7 +74,7 @@ class distribution:
             )
             kde_data.append(kde_line)
 
-            if display_maxinum_likelihood:
+            if display_maxinum_peak_density:
                 mean_val = np.mean(each_data)
                 quantile_lines.append(go.Scatter(
                     x = [mean_val, mean_val]
