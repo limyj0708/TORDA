@@ -13,7 +13,7 @@ from torda.visualization import distribution as vd
 vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
 ```
 
-#### plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = False, display_maxinum_likelihood = False, display_mean = False)
+#### plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = False, display_maxinum_peak_density = False, display_mean = False)
 - Parameters:
     - names : list of string
         - dataset 리스트 내 각 데이터의 이름.
@@ -62,7 +62,9 @@ vd.plot_histogram_kde(
     names=['Sample A', 'Sample B']
   , title='test_title'
   , height=600, width=1200, bins=60, opacity=0.5
-  , display_quantiles=[50], display_maxinum_likelihood=True, display_mean=True
+  , display_quantiles={'n_list':[50], 'line_dash':'dash'}
+  , display_maxinum_peak_density={'use':True, 'line_dash':'solid'}
+  , display_mean={'use':True, 'line_dash':'5px 10px 2px 2px'}
   , kernel = 'gaussian'
 )
 vd.plot_box(
