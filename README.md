@@ -13,7 +13,7 @@ from torda.visualization import distribution as vd
 vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
 ```
 
-#### plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = False, display_maxinum_peak_density = False, display_mean = False)
+`plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = {'n_list':False, 'line_dash':'dash'}, display_maxinum_peak_density = {'use':False, 'line_dash':'dot'}, display_mean = {'use':False, 'line_dash':'dot'})`
 - Parameters:
     - names : list of string
         - dataset 리스트 내 각 데이터의 이름.
@@ -50,7 +50,7 @@ vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
             - '5px 10px 2px 2px', '5, 10, 2, 2', '10% 20% 40%'...
                 - 선분의 형태를 조절할 수 있다.
 
-#### plot_box(names, title, height, width, colors = None)
+`plot_box(names, title, height, width, colors = None)`
 - Parameters:
     - names : list of string
         - dataset 리스트 내 각 데이터의 이름.
