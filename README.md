@@ -13,7 +13,7 @@ from torda.visualization import distribution as vd
 vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
 ```
 
-#### plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = False, display_maxinum_peak_density = False, display_mean = False)
+`plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = {'n_list':False, 'line_dash':'dash'}, display_maxinum_peak_density = {'use':False, 'line_dash':'dot'}, display_mean = {'use':False, 'line_dash':'dot'})`
 - Parameters:
     - names : list of string
         - dataset 리스트 내 각 데이터의 이름.
@@ -31,14 +31,26 @@ vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
         - 히스토그램의 투명도.
     - colors : list of string, default = None
         - 데이터별 색.
-    - display_quantiles : list of int, default = None
-        - 정수 리스트를 할당하면, 해당하는 백분위수를 점선으로 표시한다.
-    - display_maxinum_peak_density : boolean, default = False
-        -  True일 경우, KDE 결과에서 가장 밀도가 높은 peak를 점선으로 표시.
-    - display_mean : boolean, default = False
+    - display_quantiles : dictionary, default = {'n_list':False, 'line_dash':'dash'}
+        - n_list에 정수 리스트를 할당하면, 해당하는 백분위수를 horizontal line으로 출력한다.
+        - line_dash에는 아래와 같은 문자열들이 할당될 수 있다.
+            - ['solid', 'dot', 'dash', 'longdash', 'dashdot', 'longdashdot']
+            - '5px 10px 2px 2px', '5, 10, 2, 2', '10% 20% 40%'...
+                - 선분의 형태를 조절할 수 있다.
+    - display_maxinum_peak_density : dictionary, default = {'use':False, 'line_dash':'dot'}
+        - True일 경우, KDE 결과에서 가장 밀도가 높은 peak를 점선으로 표시.
+        - line_dash에는 아래와 같은 문자열들이 할당될 수 있다.
+            - ['solid', 'dot', 'dash', 'longdash', 'dashdot', 'longdashdot']
+            - '5px 10px 2px 2px', '5, 10, 2, 2', '10% 20% 40%'...
+                - 선분의 형태를 조절할 수 있다.
+    - display_mean : dictionary, default = {'use':False, 'line_dash':'dot'}
         - True일 경우, 평균 값을 점선으로 표시.
+        - line_dash에는 아래와 같은 문자열들이 할당될 수 있다.
+            - ['solid', 'dot', 'dash', 'longdash', 'dashdot', 'longdashdot']
+            - '5px 10px 2px 2px', '5, 10, 2, 2', '10% 20% 40%'...
+                - 선분의 형태를 조절할 수 있다.
 
-#### plot_box(names, title, height, width, colors = None)
+`plot_box(names, title, height, width, colors = None)`
 - Parameters:
     - names : list of string
         - dataset 리스트 내 각 데이터의 이름.
