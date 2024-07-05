@@ -80,7 +80,7 @@ class distribution:
                     x = [mean_val, mean_val]
                   , y = [0, max(kde_vals)]
                   , mode = 'lines'
-                  , name = f'{names[i]}의 평균'
+                  , name = f'{names[i]}의 최대밀도 지점'
                   , line = dict(color = colors[i % len(colors)], dash = 'dot')
                   , yaxis = 'y2'
                   , legendgroup = f"{names[i]}"
@@ -93,7 +93,7 @@ class distribution:
                     x = [max_likelihood, max_likelihood]
                   , y = [0, max(kde_vals)]
                   , mode = 'lines'
-                  , name = f'{names[i]}의 최대가능도 지점'
+                  , name = f'{names[i]}의 평균'
                   , line = dict(color = colors[i % len(colors)], dash = 'dot')
                   , yaxis = 'y2'
                   , legendgroup = f"{names[i]}"
