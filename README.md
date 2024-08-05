@@ -13,7 +13,7 @@ from torda.visualization import distribution as vd
 vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
 ```
 
-`plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = {'n_list':False, 'line_dash':'dash'}, display_maxinum_peak_density = {'use':False, 'line_dash':'dot'}, display_mean = {'use':False, 'line_dash':'dot'})`
+`plot_histogram_kde(names, title, height, width, kernel = 'gaussian', bandwidth = None, bins = 10, opacity = 0.75, colors = None, display_quantiles = {'n_list':False, 'line_dash':'dash'}, display_maxinum_peak_density = {'use':False, 'line_dash':'dot'}, display_mean = {'use':False, 'line_dash':'dot'})`
 - Parameters:
     - names : list of string
         - dataset 리스트 내 각 데이터의 이름.
@@ -25,6 +25,8 @@ vd = vd(dataset=[np.random.randn(1000), np.random.randn(1000)+2])
         - 플롯의 폭.
     - kernel : {'gaussian', 'epanechnikov'}, default = 'gaussian'
         - KDE 진행 시 어떤 kernel function을 사용할 지 선택.
+    - bandwidth : float, default = None
+        - KDE 진행 시 bandwidth를 수동으로 선택하고 싶을 경우 숫자를 할당
     - bins : int, default = 10
         - 히스토그램의 bin 숫자.
     - opacity : float, default = 0.75

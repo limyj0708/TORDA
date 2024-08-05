@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="torda",
-    version="0.1.6.1",
+    version="0.1.6.2",
     author="limyj0708",
     author_email="limyj0708@gmail.com",
     description="Tools for Repetitive Data Analysis",

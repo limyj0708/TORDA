@@ -27,7 +27,7 @@ class distribution:
         bandwidth = 1.06 * min(std_dev, iqr / 1.34) * n ** (-1 / 5)
         return bandwidth
     
-    def plot_histogram_kde(self, names, title, height, width, kernel = 'gaussian', bins = 10, opacity = 0.75, colors = None, display_quantiles = {'n_list':False, 'line_dash':'dot'}, display_maxinum_peak_density = {'use':False, 'line_dash':'dot'}, display_mean = {'use':False, 'line_dash':'dot'}):
+    def plot_histogram_kde(self, names, title, height, width, kernel = 'gaussian', bandwidth = None, bins = 10, opacity = 0.75, colors = None, display_quantiles = {'n_list':False, 'line_dash':'dot'}, display_maxinum_peak_density = {'use':False, 'line_dash':'dot'}, display_mean = {'use':False, 'line_dash':'dot'}):
         if colors is None:
             colors = ['blue', 'green', 'red', 'purple', 'orange']
         
@@ -52,13 +52,15 @@ class distribution:
             x_vals = np.linspace(each_data.min(), each_data.max(), 1000)
             
             if kernel == 'gaussian':
-                kde = stats.gaussian_kde(each_data, bw_method = 'scott')
+                bw_method = 'scott' if bandwidth is None else bandwidth
+                kde = stats.gaussian_kde(each_data, bw_method=bw_method)
                 kde_vals = kde(x_vals)
             elif kernel == 'epanechnikov':
-                if version('scikit-learn') < '1.2.0': # sklearn 버전 체크. 1.2.0 이전 버전이라면, bandwidth를 직접 계산해서 넣어줘야한다.
-                    kde = KernelDensity(bandwidth = distribution.scott_bandwidth(each_data), kernel = 'epanechnikov')
-                else:    
-                    kde = KernelDensity(bandwidth = 'scott', kernel = 'epanechnikov')
+                if bandwidth is None and version('scikit-learn') < '1.2.0':
+                    bandwidth = distribution.scott_bandwidth(each_data)
+                elif bandwidth is None:
+                    bandwidth = 'scott'
+                kde = KernelDensity(bandwidth=bandwidth, kernel='epanechnikov')
                 kde.fit(each_data.reshape(-1, 1))
                 kde_vals = np.exp(kde.score_samples(x_vals.reshape(-1, 1)))
             
