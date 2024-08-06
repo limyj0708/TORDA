@@ -139,7 +139,7 @@ class distribution:
           , height = height
           , width = width
         )
-        hist_kde_fig.show()
+        return hist_kde_fig
         
     def plot_box(self, names, title, height, width, colors = None):
         if colors is None:
@@ -162,4 +162,4 @@ class distribution:
           , height = height
           , width = width
         )
-        box_fig.show()
+        return box_fig

@@ -80,10 +80,10 @@ vd.plot_histogram_kde(
   , display_maxinum_peak_density={'use':True, 'line_dash':'solid'}
   , display_mean={'use':True, 'line_dash':'5px 10px 2px 2px'}
   , kernel = 'gaussian'
-)
+).show()
 vd.plot_box(
     names=['Sample A', 'Sample B']
   , title='test_title'
   , height=600, width=1200
-)
+).show()
 ```
